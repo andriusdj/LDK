@@ -14,6 +14,19 @@
         {% endblock %}
     </head>
     <body>
+        <div class="header">
+            <ul class="nav">
+                {% if is_granted('ROLE_USER') %}
+                <li><a href="/scores">Scores</a>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                <li><a href="/admin/players">Players</a>
+                {% endif %}
+                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                <li><a href="/admin/users">Users</a>
+                {% endif %}
+            </ul>
+        </div>
         {% block body %}{% endblock %}
     </body>
 </html>
