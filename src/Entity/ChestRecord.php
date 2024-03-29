@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Player;
 use App\Repository\ChestRecordRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;

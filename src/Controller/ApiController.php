@@ -8,20 +8,17 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 class ApiController extends AbstractController
 {
-    /**
-     * @Route("/api", name="app_api")
-     */
+    #[Route("/api")]
     public function index(): Response
     {
         return $this->json(["status" => "error", "message" => "no access"]);
     }
-    /**
-    * @Route("/api/submit", name="app_api_submit")
-    */
+    
+	#[Route("/api/submit")]
     public function submit(EntityManagerInterface $em, Request $request): Response
     {
     	$json = json_decode($request->getContent(), true);

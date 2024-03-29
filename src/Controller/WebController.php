@@ -5,9 +5,11 @@ namespace App\Controller;
 use App\Entity\ChestRecord;
 use App\Entity\ChestValue;
 use App\Entity\Player;
+use App\Form\ChestValuesType;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -26,18 +28,15 @@ class WebController extends AbstractController
     {
         $this->em = $em;
     }
-    /**
-     * @Route("/", name="app_web")
-     */
+
+    #[Route("/")]
     public function index(): Response
     {
         return $this->render('web/index.html.twig', [
         ]);
     }
 
-    /**
-     * @Route("/scores", name="app_web_scores")
-     */
+    #[Route("/scores")]
     public function scores(): Response
     {
         $players = $this->em->getRepository(Player::class)->findAll();
@@ -50,7 +49,7 @@ class WebController extends AbstractController
             ];
         }
 
-        return $this->render('', [
+        return $this->render('web/scores.html.twig', [
             'scores' => $scores
         ]);
     }
@@ -84,5 +83,18 @@ class WebController extends AbstractController
         $chestValue = $repo->findOneBy(['name' => $chestName, 'type' => $chestType]);
 
         return $chestValue->value ?? 0;
+    }
+
+    #[Route("/values")]
+    public function values(Request $request): Response
+    {
+        $chestValue = new ChestValue;
+        $form = $this->createForm(ChestValuesType::class, $chestValue);
+
+        if ($form->isValid() && $form->isSubmitted($request)) {
+            // save
+        }
+
+        return $this->render('', ['form' => $form]);
     }
 }

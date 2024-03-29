@@ -31,22 +31,37 @@ class MakeSuperuserCommand extends Command
         $this->em = $entityManager;
         $this->passwordHasher = $passwordHasher;
         $this->users = $users;
-        parent::__construct();
+        parent::__construct(self::$defaultName);
     }
 
     protected function configure(): void
     {
-        // $this
-        //     ->addArgument('username', InputArgument::OPTIONAL, 'Argument description')
-        //     ->addOption('option1', null, InputOption::VALUE_NONE, 'Option description')
-        // ;
+        $this
+            ->addArgument('username', InputArgument::OPTIONAL, 'Set/get info for particular user')
+            ->addOption('list', null, InputOption::VALUE_NONE, 'List users')
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
 
-        $username = $io->ask('Username');
+        $list = $input->getOption('list');
+        if ($list) {
+            $users = $this->users->findAll();
+            $headers = ['Username', 'Roles', 'Players'];
+            $rows = [];
+            foreach($users as $user) {
+                $rows[] = [$user->getUserIdentifier(), implode(', ', $user->getRoles()), implode(', ', $user->getPlayers()->toArray())];
+            }
+
+            $io->table($headers, $rows);
+        }
+
+        $username = $input->getArgument('username');
+        if (!$username) {
+            $username = $io->ask('Username');
+        }
 
         $user = $this->users->findOneBy(['username' => $username]);
 

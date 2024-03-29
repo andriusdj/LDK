@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Score WebController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello! ✅</h1>
+    <h2>All Scores</h2>
+    <table>
+        <tr>
+            <th>Player</th>
+            <th>Score per Day</th>
+            <th>Score per week</th>
+        </tr>
+        {% for rec in scores %}
+        <tr>
+            <td>{{ rec.player }}</td>
+            <td>{{ rec.day_score }}</td>
+            <td>{{ rec.week_score }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

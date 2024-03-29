@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Entity\ChestRecord;
+use App\Entity\User;
 use App\Repository\PlayerRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -165,6 +167,11 @@ class Player
         $this->user = $user;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getName();
     }
 
 }
