@@ -21,7 +21,7 @@ load_dotenv()
 
 pyautogui.FAILSAFE = False
 
-url = 'http://localhost:8069'
+url = os.env['HOST'] or 'http://localhost:8069'
 db = 'ldk'
 username = 'admin'
 password = 'admin'
