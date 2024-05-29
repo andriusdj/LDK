@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_castle_user,access_castle_user,model_ldk_castle,base.group_user,1,0,0,0
+access_castle_manager,access_castle_manager,model_ldk_castle,base.group_system,1,1,1,1
+access_chest_user,access_chest_user,model_ldk_chest,base.group_user,1,0,0,0
+access_chest_manager,access_chest_manager,model_ldk_chest,base.group_system,1,1,1,1
+access_chest_value_user,access_chest_value_user,model_ldk_chest_value,base.group_user,1,0,0,0
+access_chest_value_manager,access_chest_value_manager,model_ldk_chest_value,base.group_system,1,1,1,1

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        
+        <!-- Action to Open the Tree View -->
+        <record id="action_ldk_castle" model="ir.actions.act_window">
+            <field name="name">Castles</field>
+            <field name="res_model">ldk.castle</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_ldk_chest" model="ir.actions.act_window">
+            <field name="name">Chests</field>
+            <field name="res_model">ldk.chest</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_ldk_chest_value" model="ir.actions.act_window">
+            <field name="name">Chest Values</field>
+            <field name="res_model">ldk.chest.value</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="menu_fostral_ldk_main"
+                name="Clan"
+                sequence="25"
+                groups="base.group_user"
+                />
+
+        <menuitem id="menu_fostral_ldk_castle" 
+                name="Castles"
+                parent="menu_fostral_ldk_main"
+                action="action_ldk_castle"
+                sequence="10"
+                />
+
+        <menuitem id="menu_fostral_ldk_chest" 
+                name="Chests"
+                parent="menu_fostral_ldk_main"
+                action="action_ldk_chest"
+                sequence="20"
+                />
+
+        <menuitem id="menu_fostral_ldk_chest_value" 
+                name="Chest Values"
+                parent="menu_fostral_ldk_main"
+                action="action_ldk_chest_value"
+                sequence="40"
+                />
+
+        <!-- Castle Tree View -->
+        <record id="view_castle_tree" model="ir.ui.view">
+            <field name="name">castle.tree</field>
+            <field name="model">ldk.castle</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="capitol_level"/>
+                    <field name="guards_level"/>
+                    <field name="partner_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Castle Form View -->
+        <record id="view_castle_form" model="ir.ui.view">
+            <field name="name">castle.form</field>
+            <field name="model">ldk.castle</field>
+            <field name="arch" type="xml">
+                <form string="Castle">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="capitol_level"/>
+                            <field name="guards_level"/>
+                            <field name="partner_id"/>
+                        </group>
+                        <notebook>
+                            <page string="Chests">
+                                <field name="room_ids">
+                                    <tree editable="bottom" create="true" delete="true">
+                                        <field name="chest_name"/>
+                                        <field name="chest_type"/>
+                                        <field name="value" />
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Chest views -->
+        <record id="view_chest_tree" model="ir.ui.view">
+            <field name="name">chest.tree</field>
+            <field name="model">ldk.chest</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="castle_id"/>
+                    <field name="chest_name"/>
+                    <field name="chest_type"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_chest_form" model="ir.ui.view">
+            <field name="name">chest.form</field>
+            <field name="model">ldk.chest</field>
+            <field name="arch" type="xml">
+                <form string="Chest">
+                    <sheet>
+                        <group>
+                            <field name="castle_id"/>
+                            <field name="chest_name"/>
+                            <field name="chest_type"/>
+                            <field name="recorded"/>
+                            <field name="expiring_in"/>
+                            <field name="value" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- Chest value views -->
+        <record id="view_chest_value_tree" model="ir.ui.view">
+            <field name="name">chest.value.tree</field>
+            <field name="model">ldk.chest.value</field>
+            <field name="arch" type="xml">
+                <tree default_order="chest_type asc" editable="bottom">
+                    <field name="chest_name"/>
+                    <field name="chest_type"/>
+                    <field name="value"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_chest_value_form" model="ir.ui.view">
+            <field name="name">chest.value.form</field>
+            <field name="model">ldk.chest.value</field>
+            <field name="arch" type="xml">
+                <form string="Chest Value">
+                    <sheet>
+                        <group>
+                            <field name="chest_name"/>
+                            <field name="chest_type"/>
+                            <field name="value"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+
+</odoo>
