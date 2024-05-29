@@ -1,6 +1,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import MissingError
-import datetime
+from datetime import datetime
 
 class Chest(models.Model):
     _name = 'ldk.chest'
