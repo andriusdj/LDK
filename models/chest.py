@@ -14,7 +14,7 @@ class Chest(models.Model):
 
     expiring_in = fields.Char(string='Expiring in', store=True)
 
-    collected = fields.Datetyime(string='Collected', compute='_compute_collected', store=True)
+    collected = fields.Datettime(string='Collected', compute='_compute_collected', store=True)
 
     value = fields.Integer(string="Value", compute='_compute_value')
             

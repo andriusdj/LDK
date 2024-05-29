@@ -79,10 +79,11 @@
                         <notebook>
                             <page string="Chests">
                                 <field name="room_ids">
-                                    <tree editable="bottom" create="true" delete="true">
+                                    <tree editable="bottom" create="False" delete="False">
                                         <field name="chest_name"/>
                                         <field name="chest_type"/>
                                         <field name="value" />
+                                        <field name="recorded_date" />
                                     </tree>
                                 </field>
                             </page>
@@ -128,7 +129,7 @@
             <field name="name">chest.value.tree</field>
             <field name="model">ldk.chest.value</field>
             <field name="arch" type="xml">
-                <tree default_order="chest_type asc" editable="bottom">
+                <tree default_order="chest_type asc" editable="bottom" create="True" delete="True">
                     <field name="chest_name"/>
                     <field name="chest_type"/>
                     <field name="value"/>
