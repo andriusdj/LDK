@@ -14,8 +14,6 @@ class Chest(models.Model):
 
     expiring_in = fields.Char(string='Expiring in', store=True)
 
-    collected = fields.Datettime(string='Collected', compute='_compute_collected', store=True)
-
     value = fields.Integer(string="Value", compute='_compute_value')
             
     castle_id = fields.Many2one('ldk.castle', string="Castle", store=True, required=True)
