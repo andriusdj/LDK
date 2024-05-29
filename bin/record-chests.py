@@ -21,10 +21,10 @@ load_dotenv()
 
 pyautogui.FAILSAFE = False
 
-url = os.env['HOST'] or 'http://localhost:8069'
-db = 'ldk'
-username = 'admin'
-password = 'admin'
+url = os.getenv('HOST')
+db = os.getenv('DB')
+username = os.getenv('VARTOTOJAS')
+password = os.getenv('PASWORDAS')
 
 common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
 print(f"Connecting to Odoo server... OK {common.version()['server_version']}")
