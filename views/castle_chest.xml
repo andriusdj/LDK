@@ -79,11 +79,10 @@
                         <notebook>
                             <page string="Chests">
                                 <field name="chest_ids">
-                                    <tree editable="bottom" create="False" delete="False">
+                                    <tree>
                                         <field name="chest_name"/>
                                         <field name="chest_type"/>
                                         <field name="value" />
-                                        <field name="recorded_date" />
                                     </tree>
                                 </field>
                             </page>
