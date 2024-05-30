@@ -22,11 +22,12 @@ class ChestValue(models.Model):
 
     @api.depends('chest_ids')
     def _compute_chests(self):
-        value = 0
-        for chest in self.chest_ids:
-            if chest.castle_id.id == self.id:
-                value += chest.value
-        self.chest_value_total = value
+        for record in self:
+            value = 0
+            for chest in record.chest_ids:
+                if chest.castle_id.id == record.id:
+                    value += chest.value
+            record.chest_value_total = value
 
     def init(self):
         res = super().init()
