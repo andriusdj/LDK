@@ -8,10 +8,24 @@ class ChestValue(models.Model):
     name = fields.Char(string="Castle Name", store=True)
     capitol_level = fields.Integer(string="Capitol Level", store=True)
     guards_level = fields.Integer(string="Guards Level", store=True)
-    
+
+    is_main = fields.Boolean(string="Is Main?", store=True)
+        
     chest_ids = fields.One2many('ldk.chest', 'castle_id', string="Chests", store=True)
     
     partner_id = fields.Many2one('res.partner', string='Owner', store=True)
+
+    chest_value_total = fields.Integer(string="Total value of chests", compute='_compute_chests')
+    #chest_worth_week
+    #chest_worth_day
+    #chest_worth_2week
+
+    @api.depends('chest_ids')
+    def _compute_chests(self):
+        value = 0
+        for chest in self.chest_ids:
+            value += chest.value
+        self.chest_value_total = value
 
     def init(self):
         res = super().init()

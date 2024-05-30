@@ -75,6 +75,7 @@
                             <field name="capitol_level"/>
                             <field name="guards_level"/>
                             <field name="partner_id"/>
+                            <field name="chest_value_total" />
                         </group>
                         <notebook>
                             <page string="Chests">
@@ -114,7 +115,8 @@
                             <field name="castle_id"/>
                             <field name="chest_name"/>
                             <field name="chest_type"/>
-                            <field name="recorded"/>
+                            <field name="recorded" />
+                            <field name="recorded_date" />
                             <field name="expiring_in"/>
                             <field name="value" />
                         </group>
