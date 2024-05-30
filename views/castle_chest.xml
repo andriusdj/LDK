@@ -58,6 +58,7 @@
                     <field name="name"/>
                     <field name="capitol_level"/>
                     <field name="guards_level"/>
+                    <field name="chest_value_total" />
                     <field name="partner_id"/>
                 </tree>
             </field>
