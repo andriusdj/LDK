@@ -24,7 +24,8 @@ class ChestValue(models.Model):
     def _compute_chests(self):
         value = 0
         for chest in self.chest_ids:
-            value += chest.value
+            if chest.castle_id.id == self.id:
+                value += chest.value
         self.chest_value_total = value
 
     def init(self):
