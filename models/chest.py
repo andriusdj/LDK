@@ -18,7 +18,7 @@ class Chest(models.Model):
 
     created = fields.Datetime(string='Created', compute='_compute_created', store=True)
 
-    value = fields.Integer(string="Value", compute='_compute_value')
+    value = fields.Integer(string="Value", compute='_compute_value', store=True)
             
     castle_id = fields.Many2one('ldk.castle', string="Castle", store=True, required=True)
 
