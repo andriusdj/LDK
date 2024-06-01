@@ -132,9 +132,9 @@
                             <field name="castle_id"/>
                             <field name="chest_name"/>
                             <field name="chest_type"/>
-                            <field name="recorded" invisible="1" />
+                            <field name="recorded" invisible="0" />
                             <field name="recorded_date" />
-                            <field name="expiring_in" invisible="1"/>
+                            <field name="expiring_in" invisible="0"/>
                             <field name="created" />
                             <field name="value" />
                         </group>
