@@ -29,7 +29,7 @@ class Chest(models.Model):
             expiring_in_timedelta = self.parse_expiring_in(expiring_in=rec.expiring_in)
             time_left = max_duration - expiring_in_timedelta
             if not rec.recorded_date:
-                rec.recorded_date = datetime.now()
+                rec.recorded_date = self._ts2date(rec.recorded)
             rec.created = rec.recorded_date - time_left
 
     def parse_expiring_in(self, expiring_in):
@@ -62,12 +62,15 @@ class Chest(models.Model):
         for record in self:
             if record.recorded:
                 try:
-                    timestamp_float = float(record.recorded)
-                    record.recorded_date = datetime.fromtimestamp(timestamp_float)
+                    record.recorded_date = self._ts2date(ts=record.recorded)
                 except ValueError:
-                    record.recorded_date = False
+                    record.recorded_date = datetime.now()
             else:
-                record.recorded_date = False
+                record.recorded_date = datetime.now()
+
+    def _ts2date(self, ts):
+        timestamp_float = float(ts)
+        return datetime.fromtimestamp(timestamp_float)
 
     @api.depends('chest_name', 'chest_type')
     def _compute_value(self):
