@@ -10,6 +10,7 @@ class ChestValue(models.Model):
     guards_level = fields.Integer(string="Guards Level", store=True)
 
     is_main = fields.Boolean(string="Is Main?", store=True)
+    clan_id = fields.Many2one(comodel_name='ldk.clan', string='Clan', store=True)
         
     chest_ids = fields.One2many('ldk.chest', 'castle_id', string="Chests", store=True)
     
@@ -19,6 +20,10 @@ class ChestValue(models.Model):
     #chest_worth_week
     #chest_worth_day
     #chest_worth_2week
+
+    # def _get_chest_value_week(self):
+    #     for rec in self:
+    #         chests = rec.chest_ids.search(domain=[('castle_id', '=', rec.id), ('date' < week)])
 
     @api.depends('chest_ids')
     def _compute_chests(self):

@@ -5,3 +5,5 @@ access_chest_user,access_chest_user,model_ldk_chest,base.group_user,1,0,0,0
 access_chest_manager,access_chest_manager,model_ldk_chest,base.group_system,1,1,1,1
 access_chest_value_user,access_chest_value_user,model_ldk_chest_value,base.group_user,1,0,0,0
 access_chest_value_manager,access_chest_value_manager,model_ldk_chest_value,base.group_system,1,1,1,1
+access_clan_user,access_clan_user,model_ldk_clan,base.group_user,1,0,0,0
+access_clan_manager,access_clan_manager,model_ldk_clan,base.group_system,1,1,1,1

@@ -13,7 +13,8 @@
     'depends': ['base', 'website'],
     'data': [
         'security/ir.model.access.csv',
-        'views/castle_chest.xml'
+        'views/castle_chest.xml',
+        'views/res_partner_extend.xml'
     ],
     'installable': True,
     'application': True,
