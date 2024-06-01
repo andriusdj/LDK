@@ -28,6 +28,8 @@ class Chest(models.Model):
             max_duration = timedelta(hours=20)
             expiring_in_timedelta = self.parse_expiring_in(expiring_in=rec.expiring_in)
             time_left = max_duration - expiring_in_timedelta
+            if not rec.recorded_date:
+                rec.recorded_date = datetime.time()
             rec.created = rec.recorded_date - time_left
 
     def parse_expiring_in(self, expiring_in):
