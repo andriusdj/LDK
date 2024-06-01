@@ -98,6 +98,7 @@
                                     <tree>
                                         <field name="chest_name"/>
                                         <field name="chest_type"/>
+                                        <field name="created" />
                                         <field name="value" />
                                     </tree>
                                 </field>
@@ -117,6 +118,7 @@
                     <field name="castle_id"/>
                     <field name="chest_name"/>
                     <field name="chest_type"/>
+                    <field name="created" />
                 </tree>
             </field>
         </record>
@@ -130,9 +132,10 @@
                             <field name="castle_id"/>
                             <field name="chest_name"/>
                             <field name="chest_type"/>
-                            <field name="recorded" />
+                            <field name="recorded" invisible="1" />
                             <field name="recorded_date" />
-                            <field name="expiring_in"/>
+                            <field name="expiring_in" invisible="1"/>
+                            <field name="created" />
                             <field name="value" />
                         </group>
                     </sheet>
