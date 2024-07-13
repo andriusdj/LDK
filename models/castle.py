@@ -43,7 +43,7 @@ class ChestValue(models.Model):
             castle.chest_count_ragnarok7 = len(chest_count_ragnarok7)
             castle.chest_count_ragnarok14 = len(chest_count_ragnarok14)
             castle.chest_count_ancient7 = len(chest_count_ancient7)
-            castle.chest_count_ancient14 = len(chest_count_ancieent14)
+            castle.chest_count_ancient14 = len(chest_count_ancient14)
 
     @api.depends('chest_ids')
     def _compute_chests(self):
