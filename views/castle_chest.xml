@@ -72,6 +72,8 @@
                     <field name="clan_id" />
                     <field name="guards_level"/>
                     <field name="partner_id"/>
+                    <field name="chest_value_week"/>
+                    <field name="chest_value_week2"/>
                 </tree>
             </field>
         </record>
@@ -91,6 +93,8 @@
                             <field name="is_main" />
                             <field name="partner_id"/>
                             <field name="chest_value_total" />
+                            <field name="chest_value_week"/>
+                            <field name="chest_value_week2" />
                         </group>
                         <notebook>
                             <page string="Chests">
@@ -98,7 +102,7 @@
                                     <tree>
                                         <field name="chest_name"/>
                                         <field name="chest_type"/>
-                                        <field name="created" />
+                                        <field name="recorded" />
                                         <field name="value" />
                                     </tree>
                                 </field>

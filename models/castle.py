@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+import datetime
 
 class ChestValue(models.Model):
     _name = 'ldk.castle'
@@ -17,13 +18,16 @@ class ChestValue(models.Model):
     partner_id = fields.Many2one('res.partner', string='Owner', store=True)
 
     chest_value_total = fields.Integer(string="Total value of chests", compute='_compute_chests')
-    #chest_worth_week
-    #chest_worth_day
-    #chest_worth_2week
+    chest_value_week = fields.Integer(string="Chests Value 7 days", compute='_compute_week_chests')
+    chest_value_week2 = fields.Integer(string="Chests Value 14 days", compute='_compute_week_chests')
 
-    # def _get_chest_value_week(self):
-    #     for rec in self:
-    #         chests = rec.chest_ids.search(domain=[('castle_id', '=', rec.id), ('date' < week)])
+    def _compute_week_chests(self):
+        current_date = datetime.datetime.now()
+        seven_days_ago = current_date - datetime.timedelta(days=7)
+        fourteen_days_ago = current_date - datetime.timedelta(days=14)
+        for castle in self:
+            castle.chest_value_week = sum(chest.value for chest in castle.chest_ids if chest.recorded >= seven_days_ago)
+            castle.chest_value_week2 = sum(chest.value for chest in castle.chest_ids if chest.recorded >= fourteen_days_ago)
 
     @api.depends('chest_ids')
     def _compute_chests(self):

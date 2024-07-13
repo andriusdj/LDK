@@ -111,7 +111,9 @@ def cleanup():
 def upload_result(result):
     save_result(result)
     for line in result:
-        record_chest(line=line)
+        if not line.get('uploaded', False):
+            res = record_chest(line=line)
+            line['uploaded'] = bool(res)
     cleanup()
 
 def get_previous_result():
@@ -165,6 +167,7 @@ def rec_chest(previous_result):
             "chest_type": chest,
             "recorded": recording,
             "expiring_in": exp,
+            "uploaded": False
         })
 
     except IndexError:
