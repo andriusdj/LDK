@@ -9,7 +9,7 @@ class Chest(models.Model):
     _rec_name = 'chest_name'
 
     chest_name = fields.Char(string="Chest Name", store=True, required=True)
-    chest_type = fields.Char(string="Chest Type", store=True, required=True)
+    chest_type = fields.Char(string="Chest Type", store=True, required=True, index=True)
 
     recorded = fields.Char(string='Recorded Timestamp', store=True)
     recorded_date = fields.Datetime(string="Recorded", compute='_compute_recorded', store=True, index=True)
