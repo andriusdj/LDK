@@ -34,10 +34,16 @@ class ChestValue(models.Model):
         for castle in self:
             castle.chest_value_week = sum(chest.value for chest in castle.chest_ids if chest.recorded_date >= seven_days_ago)
             castle.chest_value_week2 = sum(chest.value for chest in castle.chest_ids if chest.recorded_date >= fourteen_days_ago)
-            castle.chest_count_ragnarok7 = count(chest.value for chest in castle.chest_ids if chest.recorded_date >= seven_days_ago and chest.type == "Jormungandr Shop")
-            castle.chest_count_ragnarok14 = count(chest.value for chest in castle.chest_ids if chest.recorded_date >= fourteen_days_ago and chest.type == "Jormungandr Shop")
-            castle.chest_count_ancient7 = count(chest.value for chest in castle.chest_ids if chest.recorded_date >= seven_days_ago and chest.type == "Rise of the Ancients event")
-            castle.chest_count_ancient14 = count(chest.value for chest in castle.chest_ids if chest.recorded_date >= fourteen_days_ago and chest.type == "Rise of the Ancients event")
+
+            castle.chest_count_ragnarok7 = [chest for chest in castle.chest_ids if chest.recorded_date >= seven_days_ago and chest.type == "Jormungandr Shop"]
+            castle.chest_count_ragnarok14 = [chest for chest in castle.chest_ids if chest.recorded_date >= fourteen_days_ago and chest.type == "Jormungandr Shop"]
+            castle.chest_count_ancient7 = [chest for chest in castle.chest_ids if chest.recorded_date >= seven_days_ago and chest.type == "Rise of the Ancients event"]
+            castle.chest_count_ancient14 = [chest for chest in castle.chest_ids if chest.recorded_date >= fourteen_days_ago and chest.type == "Rise of the Ancients event"]
+
+            castle.chest_count_ragnarok7 = len(chest_count_ragnarok7)
+            castle.chest_count_ragnarok14 = len(chest_count_ragnarok14)
+            castle.chest_count_ancient7 = len(chest_count_ancient7)
+            castle.chest_count_ancient14 = len(chest_count_ancieent14)
 
     @api.depends('chest_ids')
     def _compute_chests(self):

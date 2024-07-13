@@ -74,6 +74,10 @@
                     <field name="partner_id"/>
                     <field name="chest_value_week"/>
                     <field name="chest_value_week2"/>
+                    <field name="chest_count_ragnarok7" />
+                    <field name="chest_count_ragnarok14" />
+                    <field name="chest_count_ancient7" />
+                    <field name="chest_count_ancient14" />
                 </tree>
             </field>
         </record>
@@ -95,6 +99,10 @@
                             <field name="chest_value_total" />
                             <field name="chest_value_week"/>
                             <field name="chest_value_week2" />
+                            <field name="chest_count_ragnarok7" />
+                            <field name="chest_count_ragnarok14" />
+                            <field name="chest_count_ancient7" />
+                            <field name="chest_count_ancient14" />
                         </group>
                         <notebook>
                             <page string="Chests">
