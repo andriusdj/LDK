@@ -102,7 +102,7 @@
                                     <tree>
                                         <field name="chest_name"/>
                                         <field name="chest_type"/>
-                                        <field name="recorded" />
+                                        <field name="recorded_date" />
                                         <field name="value" />
                                     </tree>
                                 </field>

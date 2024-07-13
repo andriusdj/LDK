@@ -26,8 +26,8 @@ class ChestValue(models.Model):
         seven_days_ago = current_date - datetime.timedelta(days=7)
         fourteen_days_ago = current_date - datetime.timedelta(days=14)
         for castle in self:
-            castle.chest_value_week = sum(chest.value for chest in castle.chest_ids if chest.recorded >= seven_days_ago)
-            castle.chest_value_week2 = sum(chest.value for chest in castle.chest_ids if chest.recorded >= fourteen_days_ago)
+            castle.chest_value_week = sum(chest.value for chest in castle.chest_ids if chest.recorded_date >= seven_days_ago)
+            castle.chest_value_week2 = sum(chest.value for chest in castle.chest_ids if chest.recorded_date >= fourteen_days_ago)
 
     @api.depends('chest_ids')
     def _compute_chests(self):
