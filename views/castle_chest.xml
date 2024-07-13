@@ -122,7 +122,7 @@
                     <field name="castle_id"/>
                     <field name="chest_name"/>
                     <field name="chest_type"/>
-                    <field name="created" />
+                    <field name="recorded_date" />
                 </tree>
             </field>
         </record>

@@ -12,7 +12,7 @@ class Chest(models.Model):
     chest_type = fields.Char(string="Chest Type", store=True, required=True)
 
     recorded = fields.Char(string='Recorded Timestamp', store=True)
-    recorded_date = fields.Datetime(string="Recorded", compute='_compute_recorded', store=True)
+    recorded_date = fields.Datetime(string="Recorded", compute='_compute_recorded', store=True, index=True)
 
     expiring_in = fields.Char(string='Expiring in', store=True)
 
@@ -20,7 +20,7 @@ class Chest(models.Model):
 
     value = fields.Integer(string="Value", compute='_compute_value', store=True)
             
-    castle_id = fields.Many2one('ldk.castle', string="Castle", store=True, required=True)
+    castle_id = fields.Many2one('ldk.castle', string="Castle", store=True, required=True, index=True)
 
     @api.depends('recorded', 'recorded_date', 'expiring_in')
     def _compute_created(self):
